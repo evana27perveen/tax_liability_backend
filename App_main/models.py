@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+
 # Create your models here.
 class IncomeTaxReturn(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -14,6 +15,7 @@ class IncomeTaxReturn(models.Model):
     def __str__(self):
         return f"Income Tax Return - {self.user.name}"
 
+
 class IncomeTaxRegistration(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     registration_number = models.CharField(max_length=255)
@@ -21,6 +23,7 @@ class IncomeTaxRegistration(models.Model):
 
     def __str__(self):
         return f"Income Tax Registration - {self.user.name}"
+
 
 class SalesTaxRegistration(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -30,12 +33,14 @@ class SalesTaxRegistration(models.Model):
     def __str__(self):
         return f"Sales Tax Registration - {self.user.name}"
 
+
 class TaxVerification(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     verification_status = models.BooleanField(default=False)
 
     def __str__(self):
         return f"Tax Verification - {self.user.name}"
+
 
 class TaxCalculation(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -45,6 +50,7 @@ class TaxCalculation(models.Model):
 
     def __str__(self):
         return f"Tax Calculation - {self.user.name}"
+
 
 class EPayment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -56,6 +62,7 @@ class EPayment(models.Model):
     def __str__(self):
         return f"E-Payment - {self.user.name}"
 
+
 class PaymentRecord(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     payment_date = models.DateField()
@@ -65,6 +72,7 @@ class PaymentRecord(models.Model):
 
     def __str__(self):
         return f"Payment Record - {self.user.name}"
+
 
 class PenaltyCalculation(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
